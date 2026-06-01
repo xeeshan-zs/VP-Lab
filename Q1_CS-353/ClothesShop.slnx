@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ClothesShop.DAL/ClothesShop.DAL.csproj" />
+  <Project Path="ClothesShop.BLL/ClothesShop.BLL.csproj" />
+  <Project Path="ClothesShop.WinForms/ClothesShop.WinForms.csproj" />
+</Solution>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FurnitureHub.Api/FurnitureHub.Api.csproj" />
+  <Project Path="FurnitureHub.Mvc/FurnitureHub.Mvc.csproj" />
+</Solution>

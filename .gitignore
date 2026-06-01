@@ -1,0 +1,19 @@
+# Visual Studio User Settings
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Compiled Build Artifacts
+[Bb]in/
+[Oo]bj/
+
+# SQL Server local database files
+*.mdf
+*.ldf
+
+# OS cache files
+Thumbs.db
+ehthumbs.db
+Desktop.ini

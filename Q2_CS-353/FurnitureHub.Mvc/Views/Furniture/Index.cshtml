@@ -1,0 +1,115 @@
+@model Newtonsoft.Json.Linq.JArray
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Furniture Catalog</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .success-box {
+            border: 1px solid #00aa00;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: #006600;
+            background-color: #f0fff0;
+        }
+        .error-box {
+            border: 1px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: #cc0000;
+            background-color: #fff0f0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #0000aa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Home Furniture Inventory Hub</h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="success-box">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error-box">
+            @ViewBag.Error
+        </div>
+    }
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price (PKR)</th>
+                <th>Stock Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item["id"]</td>
+                        <td>@item["name"]</td>
+                        <td>@item["category"]</td>
+                        <td>@(((int)item["price"]).ToString("N0"))</td>
+                        <td>@item["stockQuantity"]</td>
+                        <td>
+                            <a href="/Furniture/Edit/@item["id"]">Edit/Update</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" style="text-align: center;">No furniture records available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

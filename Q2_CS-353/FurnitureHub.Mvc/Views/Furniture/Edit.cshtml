@@ -1,0 +1,107 @@
+@model Newtonsoft.Json.Linq.JObject
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Edit Furniture</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .error-box {
+            border: 1px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: #cc0000;
+            background-color: #fff0f0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #cccccc;
+            box-sizing: border-box;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        input[type="submit"] {
+            padding: 8px 15px;
+            border: 1px solid #555555;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #e0e0e0;
+        }
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Update Furniture Record</h1>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error-box">
+            @ViewBag.Error
+        </div>
+    }
+
+    <form method="post" action="/Furniture/Edit/@Model["id"]">
+        <input type="hidden" name="id" value="@Model["id"]" />
+        <input type="hidden" name="name" value="@Model["name"]" />
+        <input type="hidden" name="category" value="@Model["category"]" />
+
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" value="@Model["name"]" disabled />
+        </div>
+
+        <div class="form-group">
+            <label>Category:</label>
+            <input type="text" value="@Model["category"]" disabled />
+        </div>
+
+        <div class="form-group">
+            <label>Price (PKR):</label>
+            <input type="number" name="price" value="@Model["price"]" required min="0" />
+        </div>
+
+        <div class="form-group">
+            <label>Stock Quantity:</label>
+            <input type="number" name="stockQuantity" value="@Model["stockQuantity"]" required min="0" />
+        </div>
+
+        <div class="btn-container">
+            <input type="submit" value="Save Changes" />
+            <a href="/Furniture">Back to Grid</a>
+        </div>
+    </form>
+
+</body>
+</html>
